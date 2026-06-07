@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dhysmy6innkyq"]
+
+[ext_resource type="Script" uid="uid://blghcsg8pbswf" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="AudioStream" uid="uid://boduck65cgkmd" path="res://assets/virtual_vibes-digital-glitch-noise-hd-379465.mp3" id="2_g2els"]
+[ext_resource type="AudioStream" uid="uid://dplu66xp4l2lx" path="res://assets/dragon-studio-simple-whoosh-382724.mp3" id="3_qhqgy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(64, 64)
+
+[node name="Player" type="CharacterBody2D" unique_id=1950075606 groups=["player"]]
+script = ExtResource("1_g2els")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2143545026]
+shape = SubResource("RectangleShape2D_g2els")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1564697538]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.2509804, 1, 1)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1664417773]
+limit_left = -3100
+limit_right = 3100
+
+[node name="GlitchSFX" type="AudioStreamPlayer2D" parent="." unique_id=227747731]
+stream = ExtResource("2_g2els")
+
+[node name="DashSFX" type="AudioStreamPlayer2D" parent="." unique_id=1410800627]
+stream = ExtResource("3_qhqgy")

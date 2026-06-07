@@ -1,0 +1,188 @@
+[gd_scene format=3 uid="uid://cr26n7cyedcuk"]
+
+[ext_resource type="Script" uid="uid://dr6xcur3k74hp" path="res://scripts/main.gd" id="1_5xbjy"]
+[ext_resource type="PackedScene" uid="uid://cvmrjddxotjdb" path="res://scenes/civilian.tscn" id="1_rus8k"]
+[ext_resource type="PackedScene" uid="uid://dhysmy6innkyq" path="res://scenes/player.tscn" id="2_4nkto"]
+[ext_resource type="PackedScene" uid="uid://cuq6qhkbmy0rn" path="res://scenes/block.tscn" id="2_5xbjy"]
+[ext_resource type="PackedScene" uid="uid://bcesrkhho2o3p" path="res://scenes/door.tscn" id="3_4nkto"]
+[ext_resource type="AudioStream" uid="uid://c5ty4pjjbovm2" path="res://assets/245421__ezcah__tense-loop.wav" id="6_fcfvj"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fcfvj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pa8r4"]
+size = Vector2(1000, 100)
+
+[node name="Level1" type="Node2D" unique_id=1939285976 groups=["main"]]
+script = ExtResource("1_5xbjy")
+player_scene = ExtResource("2_4nkto")
+reset_player_actions = true
+level_time = 90.0
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=1701674238]
+position = Vector2(-1, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=373703417]
+shape = SubResource("WorldBoundaryShape2D_fcfvj")
+
+[node name="ColorRect" type="ColorRect" parent="Ground" unique_id=1464024048]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3194.0
+offset_right = 3206.0
+offset_bottom = 708.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftWall" type="StaticBody2D" parent="." unique_id=2004891749]
+position = Vector2(-3149, -508)
+rotation = 1.5707964
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall" unique_id=1060453126]
+shape = SubResource("RectangleShape2D_pa8r4")
+
+[node name="RightWall" type="StaticBody2D" parent="." unique_id=1568522902]
+position = Vector2(3144, -508)
+rotation = 1.5707964
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall" unique_id=1686576430]
+shape = SubResource("RectangleShape2D_pa8r4")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1250900093]
+z_index = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3201.0
+offset_top = -1274.0
+offset_right = 3199.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1706055701]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -363.0
+offset_top = -311.0
+offset_right = 361.0
+offset_bottom = -223.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "welcome to level 1..."
+uppercase = true
+
+[node name="Civilians" type="Node2D" parent="." unique_id=230064017]
+position = Vector2(-1, 0)
+
+[node name="Civilian" parent="Civilians" unique_id=1850832504 instance=ExtResource("1_rus8k")]
+position = Vector2(-402, -137)
+
+[node name="Civilian2" parent="Civilians" unique_id=1282707143 instance=ExtResource("1_rus8k")]
+position = Vector2(-1558, -241)
+actions = Array[String](["dash", "move_left", "move_right"])
+
+[node name="Blocks" type="Node2D" parent="." unique_id=166766452]
+position = Vector2(-1, 0)
+
+[node name="Block" parent="Blocks" unique_id=2028015583 instance=ExtResource("2_5xbjy")]
+position = Vector2(-407, -86)
+ability_required = "move_left"
+size = Vector2(256, 32)
+
+[node name="Block2" parent="Blocks" unique_id=1521571483 instance=ExtResource("2_5xbjy")]
+position = Vector2(-723, -32)
+ability_required = "jump"
+size = Vector2(64, 64)
+
+[node name="Block17" parent="Blocks" unique_id=1204103029 instance=ExtResource("2_5xbjy")]
+position = Vector2(-1216, -32)
+ability_required = "jump"
+size = Vector2(64, 64)
+
+[node name="Block3" parent="Blocks" unique_id=224146490 instance=ExtResource("2_5xbjy")]
+position = Vector2(399, -16)
+ability_required = "jump"
+
+[node name="Block7" parent="Blocks" unique_id=146114566 instance=ExtResource("2_5xbjy")]
+position = Vector2(723, -255)
+ability_required = "jump"
+
+[node name="Block4" parent="Blocks" unique_id=532011776 instance=ExtResource("2_5xbjy")]
+position = Vector2(-1448, -151)
+ability_required = "move_left"
+size = Vector2(256, 32)
+
+[node name="Block5" parent="Blocks" unique_id=131447865 instance=ExtResource("2_5xbjy")]
+position = Vector2(211, -164)
+ability_required = "move_left"
+size = Vector2(256, 32)
+
+[node name="Block8" parent="Blocks" unique_id=144743997 instance=ExtResource("2_5xbjy")]
+position = Vector2(1552, -550)
+ability_required = "move_left"
+size = Vector2(256, 32)
+
+[node name="Block9" parent="Blocks" unique_id=1901316861 instance=ExtResource("2_5xbjy")]
+position = Vector2(1559, -284)
+ability_required = "move_left"
+size = Vector2(256, 32)
+
+[node name="Block14" parent="Blocks" unique_id=1903532561 instance=ExtResource("2_5xbjy")]
+position = Vector2(2044, -362)
+ability_required = "move_left"
+size = Vector2(256, 32)
+
+[node name="Block15" parent="Blocks" unique_id=1996625843 instance=ExtResource("2_5xbjy")]
+position = Vector2(1554, -414)
+ability_required = "move_left"
+size = Vector2(256, 32)
+
+[node name="Block16" parent="Blocks" unique_id=1836907205 instance=ExtResource("2_5xbjy")]
+position = Vector2(2045, -485)
+ability_required = "move_left"
+size = Vector2(256, 32)
+
+[node name="Block10" parent="Blocks" unique_id=2108589655 instance=ExtResource("2_5xbjy")]
+position = Vector2(2038, -224)
+ability_required = "move_left"
+size = Vector2(256, 32)
+
+[node name="Block11" parent="Blocks" unique_id=1839059041 instance=ExtResource("2_5xbjy")]
+position = Vector2(1558, -150)
+ability_required = "move_left"
+size = Vector2(256, 32)
+
+[node name="Block12" parent="Blocks" unique_id=1101886913 instance=ExtResource("2_5xbjy")]
+position = Vector2(2035, -100)
+ability_required = "move_left"
+size = Vector2(256, 32)
+
+[node name="Block13" parent="Blocks" unique_id=309413271 instance=ExtResource("2_5xbjy")]
+position = Vector2(1783, -17)
+ability_required = "move_left"
+
+[node name="Door" parent="." unique_id=1161882592 instance=ExtResource("3_4nkto")]
+position = Vector2(1553, -596)
+next_level = "uid://bfmgpyw2oq7nn"
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1004490470]
+position = Vector2(-1, -94)
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=121084150]
+stream = ExtResource("6_fcfvj")
+volume_db = -10.0
+autoplay = true

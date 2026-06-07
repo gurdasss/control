@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://ds4qd2y6dg2l6"]
+
+[ext_resource type="Script" uid="uid://dkft6m5cs66fi" path="res://scripts/win_screen.gd" id="1_wv5lq"]
+
+[node name="WinScreen" type="Control" unique_id=55572473]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wv5lq")
+return_to = "uid://bja662ik6r2ct"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1458745759]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.49803922)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=517866215]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1

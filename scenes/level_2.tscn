@@ -1,0 +1,266 @@
+[gd_scene format=3 uid="uid://bfmgpyw2oq7nn"]
+
+[ext_resource type="Script" uid="uid://dr6xcur3k74hp" path="res://scripts/main.gd" id="1_eqxsl"]
+[ext_resource type="PackedScene" uid="uid://cvmrjddxotjdb" path="res://scenes/civilian.tscn" id="1_pbc48"]
+[ext_resource type="PackedScene" uid="uid://dhysmy6innkyq" path="res://scenes/player.tscn" id="2_b4j7a"]
+[ext_resource type="PackedScene" uid="uid://cuq6qhkbmy0rn" path="res://scenes/block.tscn" id="2_eqxsl"]
+[ext_resource type="PackedScene" uid="uid://bcesrkhho2o3p" path="res://scenes/door.tscn" id="3_b4j7a"]
+[ext_resource type="AudioStream" uid="uid://c5ty4pjjbovm2" path="res://assets/245421__ezcah__tense-loop.wav" id="6_wo48x"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wo48x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0kc7"]
+size = Vector2(1000, 100)
+
+[node name="Level2" type="Node2D" unique_id=951615350 groups=["main"]]
+script = ExtResource("1_eqxsl")
+player_scene = ExtResource("2_b4j7a")
+reset_player_actions = true
+level_time = 60.0
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=1422818093]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=2130657343]
+shape = SubResource("WorldBoundaryShape2D_wo48x")
+
+[node name="ColorRect" type="ColorRect" parent="Ground" unique_id=1588822561]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3194.0
+offset_right = 3206.0
+offset_bottom = 654.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftWall" type="StaticBody2D" parent="." unique_id=154168054]
+position = Vector2(-3148, -508)
+rotation = 1.5707964
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall" unique_id=802895509]
+shape = SubResource("RectangleShape2D_y0kc7")
+
+[node name="RightWall" type="StaticBody2D" parent="." unique_id=484081884]
+position = Vector2(3145, -508)
+rotation = 1.5707964
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall" unique_id=1087646550]
+shape = SubResource("RectangleShape2D_y0kc7")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1059782246]
+z_index = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3200.0
+offset_top = -1274.0
+offset_right = 3200.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1293762514]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1853.0
+offset_top = -249.0
+offset_right = -1129.0
+offset_bottom = -161.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "welcome to the final level..."
+uppercase = true
+
+[node name="Civilians" type="Node2D" parent="." unique_id=113106903]
+
+[node name="Civilian" parent="Civilians" unique_id=1850832504 instance=ExtResource("1_pbc48")]
+position = Vector2(-1786, -33)
+
+[node name="Civilian3" parent="Civilians" unique_id=465046284 instance=ExtResource("1_pbc48")]
+position = Vector2(-392, -162)
+
+[node name="Civilian2" parent="Civilians" unique_id=1162908700 instance=ExtResource("1_pbc48")]
+position = Vector2(539, -189)
+speed = 600.0
+actions = Array[String](["dash", "move_left", "move_right", "jump"])
+detect_threshold = 400.0
+
+[node name="Blocks" type="Node2D" parent="." unique_id=231614757]
+
+[node name="Block2" parent="Blocks" unique_id=601312962 instance=ExtResource("2_eqxsl")]
+position = Vector2(-723, -32)
+ability_required = "jump"
+size = Vector2(64, 64)
+
+[node name="Block17" parent="Blocks" unique_id=539577019 instance=ExtResource("2_eqxsl")]
+position = Vector2(-1216, -32)
+ability_required = "jump"
+size = Vector2(64, 64)
+
+[node name="Block18" parent="Blocks" unique_id=2028015583 instance=ExtResource("2_eqxsl")]
+position = Vector2(-1364, -17)
+ability_required = "jump"
+
+[node name="Block19" parent="Blocks" unique_id=100156340 instance=ExtResource("2_eqxsl")]
+position = Vector2(-1216, -84)
+ability_required = "jump"
+size = Vector2(64, 64)
+
+[node name="Block4" parent="Blocks" unique_id=1326688652 instance=ExtResource("2_eqxsl")]
+position = Vector2(-1393, -330)
+ability_required = "move_left"
+size = Vector2(256, 32)
+
+[node name="Block5" parent="Blocks" unique_id=2046109893 instance=ExtResource("2_eqxsl")]
+position = Vector2(2, -220)
+ability_required = "move_left"
+size = Vector2(256, 32)
+
+[node name="Staircase" type="Node2D" parent="Blocks" unique_id=1562710997]
+metadata/_edit_group_ = true
+
+[node name="Block3" parent="Blocks/Staircase" unique_id=1080803649 instance=ExtResource("2_eqxsl")]
+position = Vector2(413, -16)
+ability_required = "jump"
+size = Vector2(320, 32)
+
+[node name="Block7" parent="Blocks/Staircase" unique_id=1015911100 instance=ExtResource("2_eqxsl")]
+position = Vector2(429, -48)
+ability_required = "jump"
+size = Vector2(288, 32)
+
+[node name="Block18" parent="Blocks/Staircase" unique_id=988663080 instance=ExtResource("2_eqxsl")]
+position = Vector2(445, -79)
+ability_required = "jump"
+size = Vector2(256, 32)
+
+[node name="Block19" parent="Blocks/Staircase" unique_id=1375635347 instance=ExtResource("2_eqxsl")]
+position = Vector2(461, -111)
+ability_required = "jump"
+size = Vector2(224, 32)
+
+[node name="Block20" parent="Blocks/Staircase" unique_id=1383670499 instance=ExtResource("2_eqxsl")]
+position = Vector2(477, -143)
+ability_required = "jump"
+size = Vector2(192, 32)
+
+[node name="Staircase3" type="Node2D" parent="Blocks" unique_id=1969067653]
+position = Vector2(1698, 0)
+metadata/_edit_group_ = true
+
+[node name="Block3" parent="Blocks/Staircase3" unique_id=311839705 instance=ExtResource("2_eqxsl")]
+position = Vector2(413, -16)
+ability_required = "jump"
+size = Vector2(320, 32)
+
+[node name="Block7" parent="Blocks/Staircase3" unique_id=1453293885 instance=ExtResource("2_eqxsl")]
+position = Vector2(429, -48)
+ability_required = "jump"
+size = Vector2(288, 32)
+
+[node name="Block18" parent="Blocks/Staircase3" unique_id=1458804421 instance=ExtResource("2_eqxsl")]
+position = Vector2(445, -79)
+ability_required = "jump"
+size = Vector2(256, 32)
+
+[node name="Block19" parent="Blocks/Staircase3" unique_id=769103758 instance=ExtResource("2_eqxsl")]
+position = Vector2(461, -111)
+ability_required = "jump"
+size = Vector2(224, 32)
+
+[node name="Block20" parent="Blocks/Staircase3" unique_id=1043466433 instance=ExtResource("2_eqxsl")]
+position = Vector2(477, -143)
+ability_required = "jump"
+size = Vector2(192, 32)
+
+[node name="Staircase2" type="Node2D" parent="Blocks" unique_id=1654660744]
+scale = Vector2(-1, 1)
+metadata/_edit_group_ = true
+
+[node name="Block3" parent="Blocks/Staircase2" unique_id=1415758600 instance=ExtResource("2_eqxsl")]
+position = Vector2(413, -16)
+ability_required = "jump"
+size = Vector2(320, 32)
+
+[node name="Block7" parent="Blocks/Staircase2" unique_id=1284349818 instance=ExtResource("2_eqxsl")]
+position = Vector2(429, -48)
+ability_required = "jump"
+size = Vector2(288, 32)
+
+[node name="Block18" parent="Blocks/Staircase2" unique_id=2139443948 instance=ExtResource("2_eqxsl")]
+position = Vector2(445, -79)
+ability_required = "jump"
+size = Vector2(256, 32)
+
+[node name="Block19" parent="Blocks/Staircase2" unique_id=417478820 instance=ExtResource("2_eqxsl")]
+position = Vector2(461, -111)
+ability_required = "jump"
+size = Vector2(224, 32)
+
+[node name="Staircase4" type="Node2D" parent="Blocks" unique_id=1287665700]
+position = Vector2(2840, 0)
+scale = Vector2(-1, 1)
+metadata/_edit_group_ = true
+
+[node name="Block3" parent="Blocks/Staircase4" unique_id=326875461 instance=ExtResource("2_eqxsl")]
+position = Vector2(413, -16)
+ability_required = "jump"
+size = Vector2(320, 32)
+
+[node name="Block7" parent="Blocks/Staircase4" unique_id=1074701315 instance=ExtResource("2_eqxsl")]
+position = Vector2(429, -48)
+ability_required = "jump"
+size = Vector2(288, 32)
+
+[node name="Block18" parent="Blocks/Staircase4" unique_id=1453785173 instance=ExtResource("2_eqxsl")]
+position = Vector2(445, -79)
+ability_required = "jump"
+size = Vector2(256, 32)
+
+[node name="Block19" parent="Blocks/Staircase4" unique_id=1374121214 instance=ExtResource("2_eqxsl")]
+position = Vector2(461, -111)
+ability_required = "jump"
+size = Vector2(224, 32)
+
+[node name="Block13" parent="Blocks" unique_id=129415857 instance=ExtResource("2_eqxsl")]
+position = Vector2(1462, -17)
+ability_required = "move_left"
+
+[node name="Block14" parent="Blocks" unique_id=10813999 instance=ExtResource("2_eqxsl")]
+position = Vector2(642, -47)
+ability_required = "move_left"
+size = Vector2(32, 96)
+
+[node name="Block15" parent="Blocks" unique_id=629098863 instance=ExtResource("2_eqxsl")]
+position = Vector2(728, -32)
+ability_required = "move_left"
+size = Vector2(32, 64)
+
+[node name="Block16" parent="Blocks" unique_id=906458135 instance=ExtResource("2_eqxsl")]
+position = Vector2(796, -17)
+ability_required = "move_left"
+
+[node name="Door" parent="." unique_id=1161882592 instance=ExtResource("3_b4j7a")]
+position = Vector2(5, -266)
+next_level = "uid://ds4qd2y6dg2l6"
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1682717490]
+position = Vector2(-1452, -82)
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=970433290]
+stream = ExtResource("6_wo48x")
+volume_db = -10.0
+autoplay = true

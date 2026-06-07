@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://cvmrjddxotjdb"]
+
+[ext_resource type="Script" uid="uid://dlt28mw12vuti" path="res://scripts/civilian.gd" id="1_5iqb5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_avpx6"]
+size = Vector2(64, 64)
+
+[node name="Civilian" type="CharacterBody2D" unique_id=1850832504]
+script = ExtResource("1_5iqb5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=911067102]
+shape = SubResource("RectangleShape2D_avpx6")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1696680237]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AbilityIndicators" type="HBoxContainer" parent="." unique_id=1000750916]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -61.0
+offset_right = 32.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
